@@ -9,8 +9,10 @@ MongoClient.connect(url,function(err,client) {
     console.log("Connected successfully to server");
     const db = client.db("test");
     var output = db.collection('test').find({});
+    var response = null
     function iterateFunc(doc) {
         vals = JSON.stringify(doc, null, 4);
+        response = vals;
         // res.send(vals);
         console.log(vals);
         }
@@ -21,12 +23,14 @@ MongoClient.connect(url,function(err,client) {
         }
 
         output.forEach(iterateFunc, errorFunc);
+        console.log(response);
     // var cursor = db.collection('test').insertOne({
     //     name:"Apple",
     //     quantity:5,
     //     expiredDate: "tomorrow",
     //     AddDate: "05/12"
     // })
+    console.log("----");
     client.close();
 });
 
