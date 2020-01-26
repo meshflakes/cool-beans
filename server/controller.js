@@ -5,6 +5,9 @@ const vision = require('@google-cloud/vision');
 const url = 'mongodb+srv://allenzhang:allen123@cluster0-mfn6e.gcp.mongodb.net/test?retryWrites=true&w=majority';
 const addItem = require("../backend/dbinsert");
 var serviceAccount = require("./deltahacksvision.json");
+const algosdk = require('algosdk');
+const token = "ef920e2e7e002953f4b29a8af720efe8e4ecc75ff102b165e0472834b25832c1";
+const server = "http://hackathon.algodev.network";
 
 const gcsUri ='gs://ultra-might-264612.appspot.com/pic2';
 const assert = require('assert');
@@ -64,4 +67,12 @@ exports.identification = async (req,res,next) =>{
     res.send(err);
     }
 
+}
+const port = 9100;
+const client = new algosdk.Algod(token, server,);
+exports.returnData = async (requ,res,next) =>{
+    var account = algosdk.generateAccount();
+    let lastround = (await client.status()).lastRound;
+    let block = (await client.block(lastround));
+    
 }

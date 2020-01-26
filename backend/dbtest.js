@@ -9,21 +9,33 @@ MongoClient.connect(url,function(err,client) {
     console.log("Connected successfully to server");
     const db = client.db("test");
     var output = db.collection('test').find({});
-    var response = null
-    function iterateFunc(doc) {
-        vals = JSON.stringify(doc, null, 4);
-        response = vals;
-        // res.send(vals);
-        console.log(vals);
-        }
+    // response.push({
+    //     "_id": "5e2cf938ce73470c01015665",
+    //     "name": "Apple",
+    //     "quantity": 5,
+    //     "expiredDate": "tomorrow",
+    //     "addedDate": "5/12"
+    // })
+    // function iterateFunc(doc) {
+    //     // console.log("-->",doc);
+    //     response.push(doc);
+    //     // vals = JSON.stringify(doc, null, 4);
+    //     // console.log("----");
+    //     // console.log(vals);
+    //     }
 
-        function errorFunc(error) {
-            console.log(error);
-            // res.status(404).send(error)
-        }
-
-        output.forEach(iterateFunc, errorFunc);
+    //     function errorFunc(error) {
+    //         console.log(error);
+    //         // res.status(404).send(error)
+    //     }
+    output.toArray(function(err, result) {
+        if (err) throw err;
+        var response = JSON.stringify(result);
         console.log(response);
+      });
+        // console.log(output);
+        // output.forEach(iterateFunc, errorFunc);
+        // console.log(response);
     // var cursor = db.collection('test').insertOne({
     //     name:"Apple",
     //     quantity:5,
