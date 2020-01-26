@@ -13,29 +13,20 @@ import {
 import List from "../screens/LinksScreen";
 import { MonoText } from '../components/StyledText';
 import {createAppContainer} from "react-navigation";
-export default class HomeScreen extends React.Component {
-
+export default class CameraScreen extends React.Component {
   render () {
-    const {navigate} = this.props.navigation;
     // const {navigate} = this.props.navigation;
     return (
       <View style={{ flex: 1 }}>
-        <ImageBackground source={require('../images/home.png')} style={{width: '120%', height: '120%',right:86,bottom:30,flex: 1 }}>
-          <TouchableOpacity  style={{width: 30, height: 30,left:189,top:320,flex: 1 }} onPress={() => this.props.navigation.navigate('Cameras')}>
-            <Image source={require('../images/button1.png')}></Image>
-          </TouchableOpacity>
-          <TouchableOpacity  style={{width: 30, height: 30,left:190,bottom:-178,flex: 1 }}>
-            <Image source={require('../images/button2.png')}></Image>
-          </TouchableOpacity>
-        </ImageBackground>
+        <Text>wfewfwefwef</Text>
       </View>
     );
   }
 
 }
 
-HomeScreen.navigationOptions = {
-  header: null,
+CameraScreen.navigationOptions = {
+  header: "Camera",
 };
 
 function DevelopmentModeNotice() {

@@ -7,6 +7,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import CameraScreen from '../screens/CameraScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -16,6 +17,8 @@ const config = Platform.select({
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
+    List:LinksScreen,
+    Cameras:CameraScreen
   },
   config
 );
@@ -44,7 +47,7 @@ const LinksStack = createStackNavigator(
 );
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+  tabBarLabel: 'List',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   ),
